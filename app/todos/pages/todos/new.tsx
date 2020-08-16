@@ -20,7 +20,6 @@ const NewTodoPage: BlitzPage = () => {
           onSubmit={async ({ text }) => {
             try {
               const todo = await createTodo({ data: { text } })
-              alert("Success!" + JSON.stringify(todo))
               router.push("/todos/[todoId]", `/todos/${todo.id}`)
             } catch (error) {
               alert("Error creating todo " + JSON.stringify(error, null, 2))

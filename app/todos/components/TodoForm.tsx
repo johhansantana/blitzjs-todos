@@ -23,7 +23,6 @@ const TodoForm = ({ initialValues, onSubmit }: TodoFormProps) => {
           todoInputRef.current = e.target.value
         }}
       />
-      <div>{JSON.stringify(initialValues)}</div>
       <button>Submit</button>
     </form>
   )

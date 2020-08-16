@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200816000958-add-todos
+20200816010743-add-completed-to-todos

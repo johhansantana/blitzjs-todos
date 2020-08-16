@@ -14,8 +14,7 @@ export const Todo = () => {
         <title>Todo - {todo.text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Todo {todo.id}</h1>
-      <pre>{JSON.stringify(todo, null, 2)}</pre>
+      <h1>Todo {todo.text}</h1>
 
       {
         <Link href="/todos/[todoId]/edit" as={`/todos/${todo.id}/edit`}>

@@ -11,8 +11,7 @@ export const EditTodo = () => {
 
   return (
     <div>
-      <h1>Edit Todo {todo.id}</h1>
-      <pre>{JSON.stringify(todo)}</pre>
+      <h1>Edit Todo {todo.text}</h1>
 
       <TodoForm
         initialValues={todo}
@@ -23,7 +22,6 @@ export const EditTodo = () => {
               data: { text },
             })
             mutate(updated)
-            alert("Success!" + JSON.stringify(updated))
             router.push("/todos/[todoId]", `/todos/${updated.id}`)
           } catch (error) {
             console.log(error)
