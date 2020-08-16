@@ -1,4 +1,5 @@
 import { AppProps, ErrorComponent } from "blitz"
+import "app/styles/index.css"
 import { ErrorBoundary } from "react-error-boundary"
 import { queryCache } from "react-query"
 

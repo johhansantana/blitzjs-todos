@@ -32,7 +32,8 @@
     "blitz": "0.17.0",
     "react": "0.0.0-experimental-33c3af284",
     "react-dom": "0.0.0-experimental-33c3af284",
-    "react-error-boundary": "2.3.1"
+    "react-error-boundary": "2.3.1",
+    "tailwindcss": "1"
   },
   "devDependencies": {
     "@types/react": "16.9.46",
@@ -48,6 +49,7 @@
     "eslint-plugin-react-hooks": "3.0.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
+    "postcss-preset-env": "6.7.0",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
     "typescript": "3.9.7"

@@ -3,6 +3,8 @@ import { Head, Link, useRouter, useQuery, useParam, BlitzPage } from "blitz"
 import getTodo from "app/todos/queries/getTodo"
 import updateTodo from "app/todos/mutations/updateTodo"
 import TodoForm from "app/todos/components/TodoForm"
+import MainLayout from "../../../../layouts/MainLayout"
+import Title from "../../../../components/Title"
 
 export const EditTodo = () => {
   const router = useRouter()
@@ -21,7 +23,7 @@ export const EditTodo = () => {
               where: { id: todo.id },
               data: { text },
             })
-            mutate(updated)
+            await mutate(updated)
             router.push("/todos/[todoId]", `/todos/${updated.id}`)
           } catch (error) {
             console.log(error)
@@ -35,26 +37,20 @@ export const EditTodo = () => {
 
 const EditTodoPage: BlitzPage = () => {
   return (
-    <div>
+    <MainLayout>
       <Head>
         <title>Edit Todo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
+        <Title text="Todos App with Blitzjs" />
+
         <Suspense fallback={<div>Loading...</div>}>
           <EditTodo />
         </Suspense>
-
-        <p>
-          {
-            <Link href="/todos">
-              <a>Todos</a>
-            </Link>
-          }
-        </p>
       </main>
-    </div>
+    </MainLayout>
   )
 }
 

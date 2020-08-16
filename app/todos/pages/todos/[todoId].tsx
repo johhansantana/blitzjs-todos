@@ -2,6 +2,10 @@ import React, { Suspense } from "react"
 import { Head, Link, useRouter, useQuery, useParam, BlitzPage } from "blitz"
 import getTodo from "app/todos/queries/getTodo"
 import deleteTodo from "app/todos/mutations/deleteTodo"
+import MainLayout from "../../../layouts/MainLayout"
+import Title from "../../../components/Title"
+import updateTodo from "../../mutations/updateTodo"
+import TodoForm from "../../components/TodoForm"
 
 export const Todo = () => {
   const router = useRouter()
@@ -14,46 +18,23 @@ export const Todo = () => {
         <title>Todo - {todo.text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Todo {todo.text}</h1>
 
-      {
-        <Link href="/todos/[todoId]/edit" as={`/todos/${todo.id}/edit`}>
-          <a>Edit</a>
-        </Link>
-      }
-
-      <button
-        type="button"
-        onClick={async () => {
-          if (window.confirm("This will be deleted")) {
-            await deleteTodo({ where: { id: todo.id } })
-            router.push("/todos")
-          }
-        }}
-      >
-        Delete
-      </button>
+      <TodoForm initialValues={todo} edit={false} />
     </div>
   )
 }
 
 const ShowTodoPage: BlitzPage = () => {
   return (
-    <div>
+    <MainLayout>
       <main>
-        <p>
-          {
-            <Link href="/todos">
-              <a>Todos</a>
-            </Link>
-          }
-        </p>
+        <Title text="Todos App with Blitzjs" />
 
         <Suspense fallback={<div>Loading...</div>}>
           <Todo />
         </Suspense>
       </main>
-    </div>
+    </MainLayout>
   )
 }
 
